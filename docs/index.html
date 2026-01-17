@@ -471,7 +471,7 @@
 
         async function cargarDatos() {
     try {
-        const response = await fetch('docs/datos.json');
+        const response = await fetch('datos.json');
         datosGlobales = await response.json();
 
         mesSeleccionado = datosGlobales.mesActual;
