@@ -46,9 +46,9 @@ jobs:
       - name: Ejecutar exportaDatos.js
         run: node scrapingJugadores/exportaDatos.js
 
-      # 6. Copiar datos.json a la carpeta web
-      - name: Copiar datos.json a web
-        run: cp scrapingJugadores/datos.json web/datos.json
+      # 6. Copiar datos.json a la carpeta docs
+      - name: Copiar datos.json a docs
+        run: cp scrapingJugadores/datos.json docs/datos.json
 
       # 7. Hacer commit y push de los cambios
       - name: Configurar Git
