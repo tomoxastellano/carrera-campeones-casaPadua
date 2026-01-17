@@ -497,27 +497,6 @@
         const FOTO_DEFAULT_URL = 'imgs/default.png';
 
         // ======================
-        // CARGAR DATOS
-        // ======================
-        function cargarDatos() {
-            try {
-                datosGlobales = DATOS_EMBEBIDOS;
-                mesSeleccionado = datosGlobales.mesActual;
-                anioSeleccionado = datosGlobales.anioActual;
-                
-                mostrarRanking();
-                generarNavegacionPodios();
-                mostrarPodios();
-                actualizarFooter();
-                
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('rankingContainer').innerHTML = 
-                    '<div class="empty-state">Error al cargar los datos</div>';
-            }
-        }
-
-        // ======================
         // MOSTRAR RANKING
         // ======================
         function mostrarRanking() {
