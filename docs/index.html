@@ -133,6 +133,30 @@
             font-size: 13px;
         }
 
+        .botones-tmt {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin: 0 15px;
+        }
+
+        .btn-tmt {
+            background-color: #541B7C;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.2s;
+        }
+
+        .btn-tmt:hover {
+            background-color: #3d1559;
+        }
+
         .puntos {
             font-weight: 700;
             color: #541B7C;
@@ -421,6 +445,8 @@
             ranking.forEach((jugador) => {
                 const fotoUrl = obtenerUrlFoto(jugador.idJugador);
                 const clase = `puesto-${jugador.puesto}`;
+                const urlFicha = `https://tenisdemesaparatodos.com/jugadores_ficha.asp?codigo=${jugador.idJugador}`;
+                const urlTorneos = `https://tenisdemesaparatodos.com/partidos_xjugador.asp?codigo=${jugador.idJugador}`;
                 
                 html += '<tr>';
                 html += `<td class="puesto ${clase}">${jugador.puesto}</td>`;
@@ -429,6 +455,13 @@
                     <div class="info-jugador">
                         <img src="${fotoUrl}" alt="${jugador.nombreJugador}" class="foto-jugador" onerror="this.src='${FOTO_DEFAULT_URL}'">
                         <div class="nombre-jugador">${jugador.nombreJugador}</div>
+                    </div>
+                </td>`;
+                
+                html += `<td>
+                    <div class="botones-tmt">
+                        <button class="btn-tmt" onclick="window.open('${urlFicha}', '_blank')">Ver Ficha TMT</button>
+                        <button class="btn-tmt" onclick="window.open('${urlTorneos}', '_blank')">Ver Torneos TMT</button>
                     </div>
                 </td>`;
                 
