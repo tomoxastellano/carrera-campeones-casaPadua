@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-01-22T09:36:01.287Z",
+  "ultimaActualizacion": "2026-01-23T09:32:05.979Z",
   "mesActual": 1,
   "anioActual": 2026,
   "nombreMes": "Enero",
@@ -17,7 +17,7 @@
       "idJugador": "25786",
       "mes": 1,
       "anio": 2026,
-      "puntosTotales": 60,
+      "puntosTotales": 70,
       "nombreJugador": "Bonavita, Fernando Damian",
       "categoria": "5º",
       "puesto": 2
@@ -279,7 +279,7 @@
       "idJugador": "25786",
       "mes": 1,
       "anio": 2026,
-      "puntosTotales": 60,
+      "puntosTotales": 70,
       "nombreJugador": "Bonavita, Fernando Damian",
       "categoria": "5º"
     },
@@ -470,7 +470,7 @@
       "anio": 2026,
       "puesto": 2,
       "idJugador": "25786",
-      "puntosTotales": 60,
+      "puntosTotales": 70,
       "nombreJugador": "Bonavita, Fernando Damian",
       "categoria": "5º"
     },
