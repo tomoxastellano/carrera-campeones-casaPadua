@@ -16,7 +16,7 @@
             font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
             background-color: #f5f5f5;
             color: #333;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Evita scroll horizontal en el body */
         }
 
         /* BANNER SUPERIOR */
@@ -64,6 +64,7 @@
             background-color: transparent;
             text-decoration: none;
             transition: background-color 0.2s;
+            flex-shrink: 0; /* Evita que el botón se aplaste */
         }
 
         .instagram-link:hover {
@@ -82,6 +83,67 @@
             font-size: 14px;
         }
 
+        /* CUMPLEAÑOS */
+        .cumpleanios {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-left: 20px;
+        }
+
+        .cumpleanios.hidden {
+            display: none;
+        }
+
+        .cumpleanios-titulo {
+            font-size: 13px;
+            font-weight: 600;
+            color: #541B7C;
+        }
+
+        .cumpleanios-carrusel {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cumple-ficha {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #f9f9f9;
+            padding: 6px 12px;
+            border-radius: 20px;
+            min-width: 220px;
+        }
+
+        .cumple-ficha img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #FBC201;
+        }
+
+        .cumple-ficha span {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .cumple-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #541B7C;
+            font-weight: 700;
+        }
+
+        .cumple-btn:hover {
+            color: #FBC201;
+        }
+
         /* CONTENEDOR PRINCIPAL */
         .main-container {
             background-color: #541B7C;
@@ -96,27 +158,28 @@
             order: -1;
         }
 
-        /* SECCIÓN RANKING */
-        .ranking-section {
+        /* SECCIONES COMUNES (RANKING Y PODIOS) */
+        .ranking-section, .podios-section {
             background-color: white;
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .ranking-section h2 {
+        .ranking-section h2, .podios-section h2 {
             color: #541B7C;
             font-size: 20px;
+            font-weight: 600;
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 3px solid #FBC201;
-            font-weight: 600;
         }
 
         /* TABLA RANKING */
         .ranking-table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 400px; /* Ancho mínimo para forzar scroll si es necesario */
         }
 
         .ranking-table tbody tr {
@@ -153,11 +216,12 @@
             object-fit: cover;
             border: 2px solid #FBC201;
             margin-right: 10px;
+            cursor: pointer;
         }
 
         .info-jugador {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             flex: 1;
         }
 
@@ -201,16 +265,7 @@
             font-size: 14px;
         }
 
-        /* SECCIÓN PODIOS */
-        .podios-section {
-            background-color: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-        }
-
+        /* PODIOS */
         .podios-header {
             display: flex;
             justify-content: space-between;
@@ -219,12 +274,12 @@
             padding-bottom: 15px;
             border-bottom: 3px solid #FBC201;
         }
-
-        .podios-section h2 {
-            color: #541B7C;
-            font-size: 20px;
-            font-weight: 600;
+        
+        /* Corrección para que el h2 dentro del header no tenga margen extra */
+        .podios-header h2 {
             margin: 0;
+            border: none;
+            padding: 0;
         }
 
         .podios-mes-actual {
@@ -238,6 +293,7 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 10px;
+            flex-wrap: wrap; /* Permite que los botones bajen si no entran */
         }
 
         .btn-nav-mes {
@@ -263,7 +319,6 @@
             border-color: #FBC201;
         }
 
-        /* PODIOS DISPLAY */
         .podios-display {
             display: flex;
             flex-direction: column;
@@ -306,6 +361,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #FBC201;
+            cursor: pointer;
         }
 
         .podio-nombre {
@@ -326,56 +382,6 @@
             font-size: 13px;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .main-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .banner {
-                padding: 15px 30px;
-            }
-
-            .banner-title {
-                font-size: 24px;
-            }
-
-            .banner-logo {
-                width: 70px;
-                height: 70px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .banner {
-                padding: 15px 20px;
-            }
-
-            .banner-title {
-                font-size: 20px;
-            }
-
-            .banner-logo {
-                width: 60px;
-                height: 60px;
-            }
-
-            .banner-content {
-                gap: 15px;
-            }
-
-            .main-container {
-                padding: 20px;
-                gap: 20px;
-            }
-
-            .ranking-section,
-            .podios-section {
-                padding: 20px;
-            }
-        }
-
         .footer {
             background-color: #0A0B0D;
             color: #999;
@@ -393,132 +399,142 @@
         }
 
         /* OVERLAY FOTO */
-.foto-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.75);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
+        .foto-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
 
-.foto-overlay.hidden {
-    display: none;
-}
+        .foto-overlay.hidden {
+            display: none;
+        }
 
-.foto-overlay-contenido {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 6px solid #FBC201;
-    background-color: white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+        .foto-overlay-contenido {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid #FBC201;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-.foto-overlay-contenido img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        .foto-overlay-contenido img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-        .cumpleanios {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-left: 20px;
-}
+        /* ========================================= */
+        /* RESPONSIVE (CELULARES Y TABLETS)          */
+        /* ========================================= */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .banner-title {
+                font-size: 24px;
+            }
+        }
 
-.cumpleanios.hidden {
-    display: none;
-}
+        @media (max-width: 768px) {
+            /* BANNER EN COLUMNA */
+            .banner {
+                padding: 15px 20px;
+            }
 
-.cumpleanios-titulo {
-    font-size: 13px;
-    font-weight: 600;
-    color: #541B7C;
-}
+            .banner-content {
+                display: flex;
+                flex-direction: column; /* Apila elementos */
+                align-items: center;
+                gap: 15px;
+                text-align: center;
+            }
 
-.cumpleanios-carrusel {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+            .banner-logo {
+                width: 70px;
+                height: 70px;
+            }
 
-.cumple-ficha {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #f9f9f9;
-    padding: 6px 12px;
-    border-radius: 20px;
-    min-width: 220px;
-}
+            .banner-title {
+                font-size: 20px;
+                margin: 0;
+                width: 100%;
+            }
 
-.cumple-ficha img {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #FBC201;
-}
+            .cumpleanios {
+                margin-left: 0; /* Quita margen lateral */
+                width: 100%;
+                align-items: center;
+            }
 
-.cumple-ficha span {
-    font-size: 13px;
-    font-weight: 600;
-    color: #333;
-}
+            .instagram-link {
+                width: 100%;
+                justify-content: center; /* Centra contenido del botón */
+                background-color: #f9f9f9;
+            }
 
-.cumple-btn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: #541B7C;
-    font-weight: 700;
-}
+            /* MAIN CONTAINER */
+            .main-container {
+                padding: 15px;
+                gap: 20px;
+            }
 
-.cumple-btn:hover {
-    color: #FBC201;
-}
+            /* SCROLL HORIZONTAL PARA TABLAS (Evita bordes comidos) */
+            .ranking-section,
+            .podios-section {
+                padding: 15px;
+                overflow-x: auto; /* IMPORTANTE: Permite scroll si no entra */
+            }
 
-@media (max-width: 768px) {
-    .cumpleanios {
-        margin-left: 0;
-    }
+            /* Ajustes finos de la tabla */
+            .ranking-table td {
+                padding: 6px 4px;
+                font-size: 12px;
+            }
 
-    .cumple-ficha {
-        min-width: 180px;
-    }
-}
-        
+            .foto-jugador {
+                width: 35px;
+                height: 35px;
+            }
+
+            .botones-tmt {
+                margin: 0 5px;
+            }
+
+            .cumple-ficha {
+                min-width: 180px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- BANNER -->
     <div class="banner">
         <div class="banner-content">
             <div class="banner-logo">
                 <img src="imgs/escudoPadua.png" alt="CASA de Padua" onerror="this.style.display='none'">
             </div>
             <div class="banner-title">CASA de Padua | Carrera de Campeones</div>
+            
             <div id="cumpleaniosBanner" class="cumpleanios hidden">
-    <div class="cumpleanios-titulo">
-        🎉 ¡Hoy hay cumpleaños en el CASA de Padua!
-    </div>
+                <div class="cumpleanios-titulo">
+                    🎉 ¡Hoy hay cumpleaños en el CASA de Padua!
+                </div>
+                <div class="cumpleanios-carrusel">
+                    <button class="cumple-btn" onclick="prevCumple()">‹</button>
+                    <div class="cumple-ficha">
+                        <img id="cumpleFoto" src="" alt="">
+                        <span id="cumpleNombre"></span>
+                    </div>
+                    <button class="cumple-btn" onclick="nextCumple()">›</button>
+                </div>
+            </div>
 
-    <div class="cumpleanios-carrusel">
-        <button class="cumple-btn" onclick="prevCumple()">‹</button>
-
-        <div class="cumple-ficha">
-            <img id="cumpleFoto" src="" alt="">
-            <span id="cumpleNombre"></span>
-        </div>
-
-        <button class="cumple-btn" onclick="nextCumple()">›</button>
-    </div>
-</div>
             <a href="https://www.instagram.com/tenisdemesa.casadepadua/" target="_blank" class="instagram-link">
                 <img src="imgs/logoInstagram.png" alt="Instagram" class="instagram-icon">
                 <span class="instagram-text">CASA de Padua Instagram</span>
@@ -526,15 +542,12 @@
         </div>
     </div>
 
-    <!-- CONTENEDOR PRINCIPAL -->
     <div class="main-container">
-        <!-- RANKING DEL MES -->
         <div class="ranking-section">
             <h2>Ranking Mensual</h2>
             <div id="rankingContainer" class="empty-state">Cargando datos...</div>
         </div>
 
-        <!-- PODIOS -->
         <div class="podios-section">
             <div class="podios-header">
                 <h2>Podios</h2>
@@ -549,110 +562,112 @@
 
     <div class="footer" id="ultimaActualizacion"></div>
 
+    <div id="fotoOverlay" class="foto-overlay hidden">
+        <div class="foto-overlay-contenido">
+            <img id="fotoOverlayImg" src="" alt="Jugador">
+        </div>
+    </div>
+
     <script>
         // Variables globales
         let datosGlobales = null;
         let mesSeleccionado = null;
         let anioSeleccionado = null;
+        
+        // CUMPLEAÑOS
         const SHEET_ID = '1cMGOHlhpTtOyLAtkzmnC4ubF6khQbOspOFvb9xvVpfs';
-const SHEET_NAME = 'cumpleanios';
-const GOOGLE_API_KEY = 'AIzaSyBRx0u9C07wkqQh_WGdeZzF-EhMEtyXGt8';
-
+        const SHEET_NAME = 'cumpleanios';
+        const GOOGLE_API_KEY = 'AIzaSyBRx0u9C07wkqQh_WGdeZzF-EhMEtyXGt8';
         let cumpleaniosHoy = [];
-let indiceCumple = 0;
-let timerCumple = null;
+        let indiceCumple = 0;
+        let timerCumple = null;
 
         async function cargarCumpleanios() {
-    try {
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${GOOGLE_API_KEY}`;
-        const res = await fetch(url);
-        const data = await res.json();
+            try {
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${GOOGLE_API_KEY}`;
+                const res = await fetch(url);
+                const data = await res.json();
 
-        const filas = data.values.slice(1); // sin encabezado
-        const hoy = new Date();
-        const hoyStr = String(hoy.getDate()).padStart(2, '0') + '/' +
-                       String(hoy.getMonth() + 1).padStart(2, '0');
+                if (!data.values) return; // Validación simple
 
-        console.log("Cumples crudos (filas):", filas);
-console.log("Hoy (hoyStr):", hoyStr);
+                const filas = data.values.slice(1); // sin encabezado
+                const hoy = new Date();
+                const hoyStr = String(hoy.getDate()).padStart(2, '0') + '/' +
+                               String(hoy.getMonth() + 1).padStart(2, '0');
 
-        cumpleaniosHoy = filas
-            .filter(f => f.length >= 3 && f[2] === hoyStr)
-            .map(f => ({
-                idJugador: f[0],
-                nombre: f[1],
-                foto: `imgs/${f[0]}.png`
-            }));
+                cumpleaniosHoy = filas
+                    .filter(f => f.length >= 3 && f[2] === hoyStr)
+                    .map(f => ({
+                        idJugador: f[0],
+                        nombre: f[1],
+                        foto: `imgs/${f[0]}.png`
+                    }));
 
-        if (cumpleaniosHoy.length > 0) {
-            document.getElementById('cumpleaniosBanner')
-                .classList.remove('hidden');
-            mostrarCumple();
-            iniciarAutoCumple();
+                if (cumpleaniosHoy.length > 0) {
+                    document.getElementById('cumpleaniosBanner').classList.remove('hidden');
+                    mostrarCumple();
+                    iniciarAutoCumple();
+                }
+            } catch (e) {
+                console.error('Error cargando cumpleaños', e);
+            }
         }
-    } catch (e) {
-        console.error('Error cargando cumpleaños', e);
-    }
-}
 
         async function cargarDatos() {
-    try {
-        const response = await fetch('datos.json');
-        if (!response.ok) {
-            throw new Error('No se pudo cargar datos.json');
+            try {
+                const response = await fetch('datos.json');
+                if (!response.ok) throw new Error('No se pudo cargar datos.json');
+
+                datosGlobales = await response.json();
+                mesSeleccionado = datosGlobales.mesActual;
+                anioSeleccionado = datosGlobales.anioActual;
+
+                mostrarRanking();
+                generarNavegacionPodios();
+                mostrarPodios();
+                actualizarFooter();
+            } catch (error) {
+                console.error(error);
+                document.getElementById('rankingContainer').innerHTML =
+                    '<div class="empty-state">Error al cargar los datos</div>';
+            }
         }
 
-        datosGlobales = await response.json();
-
-        mesSeleccionado = datosGlobales.mesActual;
-        anioSeleccionado = datosGlobales.anioActual;
-
-        mostrarRanking();
-        generarNavegacionPodios();
-        mostrarPodios();
-        actualizarFooter();
-    } catch (error) {
-        console.error(error);
-        document.getElementById('rankingContainer').innerHTML =
-            '<div class="empty-state">Error al cargar los datos</div>';
-    }
-}
-
         function mostrarCumple() {
-    const jugador = cumpleaniosHoy[indiceCumple];
-    const img = document.getElementById('cumpleFoto');
-    const nombre = document.getElementById('cumpleNombre');
+            if (cumpleaniosHoy.length === 0) return;
+            const jugador = cumpleaniosHoy[indiceCumple];
+            const img = document.getElementById('cumpleFoto');
+            const nombre = document.getElementById('cumpleNombre');
 
-    img.src = jugador.foto;
-    img.onerror = () => img.src = 'imgs/default.png';
-    nombre.textContent = jugador.nombre;
-}
+            img.src = jugador.foto;
+            img.onerror = () => img.src = 'imgs/default.png';
+            nombre.textContent = jugador.nombre;
+        }
+
         function nextCumple() {
-    indiceCumple = (indiceCumple + 1) % cumpleaniosHoy.length;
-    mostrarCumple();
-}
+            if (cumpleaniosHoy.length === 0) return;
+            indiceCumple = (indiceCumple + 1) % cumpleaniosHoy.length;
+            mostrarCumple();
+        }
 
-function prevCumple() {
-    indiceCumple =
-        (indiceCumple - 1 + cumpleaniosHoy.length) % cumpleaniosHoy.length;
-    mostrarCumple();
-}
+        function prevCumple() {
+            if (cumpleaniosHoy.length === 0) return;
+            indiceCumple = (indiceCumple - 1 + cumpleaniosHoy.length) % cumpleaniosHoy.length;
+            mostrarCumple();
+        }
+
         function iniciarAutoCumple() {
-    if (timerCumple) clearInterval(timerCumple);
-    timerCumple = setInterval(nextCumple, 7500);
-}
+            if (timerCumple) clearInterval(timerCumple);
+            timerCumple = setInterval(nextCumple, 7500);
+        }
         
-        const FOTOS_BASE_URL = 'https://drive.google.com/uc?export=view&id=';
-        const FOTOS_IDS = {};
-        const FOTO_DEFAULT_URL = 'imgs/default.png';
-
         // ======================
         // MOSTRAR RANKING
         // ======================
         function mostrarRanking() {
             const ranking = datosGlobales.rankingMesActual;
             
-            if (ranking.length === 0) {
+            if (!ranking || ranking.length === 0) {
                 document.getElementById('rankingContainer').innerHTML = 
                     '<div class="empty-state">No hay jugadores con participaciones en este mes.</div>';
                 return;
@@ -661,7 +676,7 @@ function prevCumple() {
             let html = '<table class="ranking-table"><tbody>';
 
             ranking.forEach((jugador) => {
-                const fotoUrl = obtenerUrlFoto(jugador.idJugador);
+                const fotoUrl = `imgs/${jugador.idJugador}.png`;
                 const clase = `puesto-${jugador.puesto}`;
                 const urlFicha = `https://tenisdemesaparatodos.com/jugadores_ficha.asp?codigo=${jugador.idJugador}`;
                 const urlTorneos = `https://tenisdemesaparatodos.com/partidos_xjugador.asp?codigo=${jugador.idJugador}`;
@@ -749,7 +764,7 @@ function prevCumple() {
                 const podio = podiosMes.find(p => p.puesto === puesto);
                 
                 if (podio) {
-                    const fotoUrl = obtenerUrlFoto(podio.idJugador);
+                    const fotoUrl = `imgs/${podio.idJugador}.png`;
                     html += `
                         <div class="podio-posicion">
                             <div class="podio-foto-contenedor">
@@ -782,9 +797,6 @@ function prevCumple() {
             document.getElementById('podiosContainer').innerHTML = html;
         }
 
-        // ======================
-        // CAMBIAR MES PODIOS
-        // ======================
         function cambiarMesPodios(mes, anio) {
             mesSeleccionado = mes;
             anioSeleccionado = anio;
@@ -797,10 +809,12 @@ function prevCumple() {
             mostrarPodios();
         }
 
+        // ======================
+        // OVERLAY Y HELPERS
+        // ======================
         function abrirOverlayFoto(src) {
             const overlay = document.getElementById('fotoOverlay');
             const img = document.getElementById('fotoOverlayImg');
-        
             img.src = src;
             overlay.classList.remove('hidden');
         }
@@ -809,10 +823,6 @@ function prevCumple() {
             document.getElementById('fotoOverlay').classList.add('hidden');
         }
 
-
-        // ======================
-        // FUNCIONES AUXILIARES
-        // ======================
         function getMedalla(puesto) {
             const medallas = { 1: '🥇', 2: '🥈', 3: '🥉' };
             return medallas[puesto] || '';
@@ -826,11 +836,8 @@ function prevCumple() {
             return meses[mes - 1];
         }
 
-        function obtenerUrlFoto(idJugador) {
-            return `imgs/${idJugador}.png`;
-        }
-
         function actualizarFooter() {
+            if (!datosGlobales.ultimaActualizacion) return;
             const fecha = new Date(datosGlobales.ultimaActualizacion);
             const fechaFormato = fecha.toLocaleDateString('es-AR');
             document.getElementById('ultimaActualizacion').innerHTML = 
@@ -843,26 +850,13 @@ function prevCumple() {
         window.addEventListener('DOMContentLoaded', () => {
             cargarDatos();
             cargarCumpleanios();
-        
-            // Cerrar overlay al hacer click
-            document.getElementById('fotoOverlay')
-                .addEventListener('click', cerrarOverlayFoto);
-        
-            // Cerrar overlay con ESC
+            
+            // Listeners Overlay
+            document.getElementById('fotoOverlay').addEventListener('click', cerrarOverlayFoto);
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    cerrarOverlayFoto();
-                }
+                if (e.key === 'Escape') cerrarOverlayFoto();
             });
         });
     </script>
-
-<!-- OVERLAY FOTO JUGADOR -->
-<div id="fotoOverlay" class="foto-overlay hidden">
-    <div class="foto-overlay-contenido">
-        <img id="fotoOverlayImg" src="" alt="Jugador">
-    </div>
-</div>
-    
 </body>
 </html>
