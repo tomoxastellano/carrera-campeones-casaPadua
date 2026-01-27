@@ -573,6 +573,9 @@ let timerCumple = null;
         const hoyStr = String(hoy.getDate()).padStart(2, '0') + '/' +
                        String(hoy.getMonth() + 1).padStart(2, '0');
 
+        console.log("Cumples crudos (filas):", filas);
+console.log("Hoy (hoyStr):", hoyStr);
+
         cumpleaniosHoy = filas
             .filter(f => f.length >= 3 && f[2] === hoyStr)
             .map(f => ({
